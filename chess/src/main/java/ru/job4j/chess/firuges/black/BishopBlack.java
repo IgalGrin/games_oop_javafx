@@ -5,7 +5,7 @@ import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
 public class BishopBlack implements Figure {
-    private final Cell position; /* клетка на которой создаем фигуру, координаты */
+    private final Cell position;
 
     public BishopBlack(final Cell ps) {
         position = ps;
@@ -24,10 +24,9 @@ public class BishopBlack implements Figure {
             );
         }
         int size = Math.abs(position.getX() - dest.getX());
-        Cell[] steps = new Cell[size]; /* массив вмещающий клетки от стартовой */
-                                       /* позиции фигуры до конечной без самой стартовой */
-        int deltaX = 1;
-        int deltaY = -1;
+        Cell[] steps = new Cell[size];
+        int deltaX = (position.getX() - dest.getX() < 0) ? 1 : -1;
+        int deltaY = (position.getY() - dest.getY() > 0) ? -1 : 1;
         int x = position.getX();
         int y = position.getY();
         for (int index = 0; index < size; index++) {
